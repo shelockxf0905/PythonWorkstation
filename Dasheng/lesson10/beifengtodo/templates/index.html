@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <form  action="{% url 'add_dream' %}"method="post">
+        {% csrf_token %}
+        <p>{{ dreamForm.content }}</p>
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">Add</button>
+    </span>
+    </form>
+
+    <div>
+        <h2>梦想清单</h2>
+        {% if dreamList %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>做梦</th>
+                        <th>状态</th>
+                        <th>时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   {% for dream in dreamList %}
+                        <tr>
+                            <td>{{ dream.content }}</td>
+                            <td>
+                                {% if dream.status == True %}
+                                已完成
+                                {% else %}
+                                未完成
+                                {% endif %}
+                            </td>
+                            <td>{{ dream.dtime | date:'Y-m-d h:i:s'}}</td>
+                            {% if dream.status == 1 %}
+                                <td><a href="{% url 'update_dream' %}?did={{ dream.id }}" class="btn btn-primary">没完成</a></td>
+                            {% else %}
+                                <td><a href="{% url 'update_dream' %}?did={{ dream.id }}" class="btn btn-primary">完成了</a></td>
+                            {% endif %}
+                            <td><a href="{% url 'delete_dream' %}?did={{ dream.id }}" class="btn btn-danger">放弃了</a></td>
+
+                        </tr>
+                   {% endfor %}
+                </tbody>
+            </table>
+    {% else %}
+            <h3 class="text-info">No dreams,please add</h3>
+    {% endif %}
+
+    </div>
+{% endblock %}
+
