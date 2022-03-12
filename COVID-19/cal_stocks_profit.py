@@ -31,7 +31,7 @@ def cal_stocks_profit():
 
     logging.debug('''----------- cal profit start -----------''')
 
-    for row in range(2,stock_sheet.max_row + 1):
+    for row in range(2, stock_sheet.max_row + 1):
         # 交易日期
         deal_date = stock_sheet['A' + str(row)].value
         # 股票代码
