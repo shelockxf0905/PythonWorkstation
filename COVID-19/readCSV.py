@@ -69,7 +69,7 @@ def get_info_list_by_date(csv_file, date, count_type):
         1.confirmed_count.csv(确诊人数文件)
         2.cured_count.csv(治愈人数文件)
         3.dead_count.csv(死亡人数文件)
-        4.dead_rate.csv(死亡率人数文件)
+        4.dead_rate.csv(死亡率文件)
     """
     info_list = []
     i = 0
