@@ -9,27 +9,21 @@ from stocks.stock_info import stock_info
 import logging
 
 money_unit = '元'
-sheet_title = ["证券代码", "证券名称", "买入均价", "买入股数", "买入金额","买入手续费",
-               "卖出均价", "卖出股数", "卖出金额","卖出手续费", "净利润", "净利润率", "综合净利润", "综合净利润率"]
+sheet_title = ["证券代码", "证券名称", "成交日期", "买入价格", "买入股数", "买入金额", "买入手续费", "买入印花税", "买入其他杂费"
+               "卖出价格", "卖出股数", "卖出金额", "卖出手续费", "卖出印花税", "卖出其他杂费", "交易市场", "交易成本", "净利润",
+               "净利润率"]
+file_name = "D:\\yuxiaoyi\\2022-03-14\\A股历史成交明细.xlsx"
 
 
-def cal_stocks_profit():
-    """
-        计算股票收益
-    """
-    stock_wb = openpyxl.load_workbook('D:\\投资\\A股历史成交明细.xlsx')
-    stock_sheet = stock_wb.active
-    cal_profit_sheet = stock_wb.create_sheet("cal_profit")
-    set_title(cal_profit_sheet)
-
+def get_stock_info_dict(stock_sheet):
+    # 股票信息字典
+    stock_info_dict = {}
     # 股票列表
     stock_list = []
     # 市场list
     market_list = []
     profit = 0
     profit_rate = 0.0
-
-    logging.debug('''----------- cal profit start -----------''')
 
     for row in range(2, stock_sheet.max_row + 1):
         # 交易日期
@@ -62,19 +56,35 @@ def cal_stocks_profit():
                           operation, float(handling_charge), float(stamp_duty), float(others), market_region)
         # 买入成本
         if operation == '卖出':
-            result, rate = cal_profit(cal_profit_sheet, info, stock_list)
-            profit = profit + result
-            profit_rate = profit_rate + rate
+            return
+            # result, rate = cal_profit(cal_profit_sheet, info, stock_list)
+            # profit = profit + result
+            # profit_rate = profit_rate + rate
         else:
             # 买入成本
             info.cost = float(deal_amount) + float(handling_charge) + float(stamp_duty) + float(others)
             stock_list.append(info)
 
-    logging.debug('''
-                从2000年至今{0}市场的股票收益如下:
-                净利润={1},
-                净利润率={2}%
-                '''.format(market_list, str(round(profit, 2)) + money_unit, round(profit_rate, 4) * 100))
+    return stock_info_dict
+
+
+def cal_stocks_profit():
+    """
+        计算股票收益
+    """
+    stock_wb = openpyxl.load_workbook(file_name)
+    stock_sheet = stock_wb['stock_info']
+    # 创建计算利润sheet
+    # cal_profit_sheet = stock_wb.create_sheet("cal_profit")
+    # 保存工作簿
+    # stock_wb.save(file_name)
+    # 设置[计算利润]sheet的第一行数据
+    # set_title(cal_profit_sheet)
+
+    logging.debug('''----------- cal profit start -----------''')
+    stock_info_dict = {}
+    stock_info_dict = get_stock_info_dict(stock_sheet)
+
     logging.debug('''----------- cal profit end -------------''')
 
 

@@ -23,9 +23,6 @@ class stock_info:
     deal_price = ''
     # 成交量
     deal_count = ''
-
-
-    
     # 成交金额
     deal_amount = ''
     # 股票操作

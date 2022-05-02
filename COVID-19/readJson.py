@@ -130,15 +130,15 @@ def read_json_file():
     """
         读取json文件(DXYArea.json)
     """
-    json_filename = 'D:\\yuxiaoyi\\2022-03-09\\DXYArea.json'
+    json_filename = 'D:\\yuxiaoyi\\2022-05-02\\DXYArea.json'
     # 新冠疫情确诊总人数
-    csv_confirmed_count = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-03-09\\confirmed_count.csv'
+    csv_confirmed_count = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-02\\confirmed_count.csv'
     # 新冠疫情治愈总人数
-    csv_cured_count = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-03-09\\cured_count.csv'
+    csv_cured_count = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-02\\cured_count.csv'
     # 新冠疫情死亡总人数
-    csv_dead_count = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-03-09\\dead_count.csv'
+    csv_dead_count = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-02\\dead_count.csv'
     # 新冠疫情死亡率
-    csv_dead_rate = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-03-09\\dead_rate.csv'
+    csv_dead_rate = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-02\\dead_rate.csv'
     # 新冠疫情确诊人数文件
     confirmed_count_file = open(csv_confirmed_count, 'w', encoding='utf-8')
     # 新冠疫情治愈人数文件
