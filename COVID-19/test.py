@@ -6,7 +6,7 @@ import openpyxl
 cate = ['Apple', 'Huawei', 'Xiaomi', 'Oppo', 'Vivo', 'Meizu']
 data1 = [123, 153, 89, 107, 98, 23]
 data2 = [56, 77, 93, 68, 45, 67]
-file_name = "D:\\yuxiaoyi\\2022-03-14\\A股历史成交明细.xlsx"
+file_name = "D:\\yuxiaoyi\\2022-05-04\\A股历史成交明细.xlsx"
 
 
 def main():
@@ -24,15 +24,15 @@ def main():
     #
     # bar.render_notebook()
 
-    # stock_wb = openpyxl.load_workbook(file_name)
-    # stock_sheet = stock_wb['stock_info']
+    stock_wb = openpyxl.load_workbook(file_name)
+    stock_sheet = stock_wb['stock_info']
     # print([[c.value for c in row] for row in stock_sheet['A2:M105']])
     #
     # print([[col.value for col in columns][1:] for columns in stock_sheet['A:K']])
     #
     # print(list(zip(*list(stock_sheet.values)[1:])))
 
-    # sh = stock_wb.worksheets[0]
+    sh = stock_wb.worksheets[0]
     # for row in sh.rows:
     #     print([c.value for c in row])
     #
@@ -40,21 +40,21 @@ def main():
     #     print([c.value for c in col])
     #
     # print(sh.min_row, sh.min_column, sh.max_row, sh.max_column)
-    #
+
     # for row in sh.iter_rows(min_row=2, min_col=2, max_row=sh.max_row, max_col=2):
     #     print([c.value for c in row])
-    #
+
     # for row in list(sh.rows)[1:]:
     #     line = [c.value for c in row]
     #     print("[%s-%s]:%s" % (line[1], line[2], line[3:]))
-    #
+
     # for col in list(sh.columns)[1:]:
     #     line = [c.value for c in col][1:]
     #     print(line)
 
-    # line = [[c.value for c in row] for row in sh.iter_rows(min_row=2, min_col=1, max_row=sh.max_row,
-    #                                                        max_col=sh.max_column)]
-    # print(line)
+    line = [[c.value for c in row] for row in sh.iter_rows(min_row=2, min_col=1, max_row=sh.max_row,
+                                                           max_col=sh.max_column)]
+    print(line)
 
     # line = [c.value for c in sh['B']][1:]
     # print(line)
@@ -83,9 +83,9 @@ def main():
     # 工作表['A1'] =
     # 工作表.cell(2, 3, 'Gandum is comming.')
 
-    wb = openpyxl.Workbook()
-    ws = wb.active
-    ws.title = "十九乘法口诀表"
+    # wb = openpyxl.Workbook()
+    # ws = wb.active
+    # ws.title = "十九乘法口诀表"
     # for x in range(1, 20):
     #     for y in range(1, x + 1):
     #         print(y, '*', x, '=', y*x, end='\t')
@@ -93,9 +93,9 @@ def main():
     #     print('')
     # wb.save('十九乘法表.xlsx')
 
-    for r in [['%d × %d = %d' % (y, x, x * y) for y in range(1, x + 1)] for x in range(1, 20)]:
-        ws.append(r)
-    wb.save('十九乘法表.xlsx')
+    # for r in [['%d × %d = %d' % (y, x, x * y) for y in range(1, x + 1)] for x in range(1, 20)]:
+    #     ws.append(r)
+    # wb.save('十九乘法表.xlsx')
 
 
 if __name__ == '__main__':
