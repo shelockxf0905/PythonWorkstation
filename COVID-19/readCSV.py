@@ -206,18 +206,18 @@ def read_csv_file():
         4.死亡率
     """
     # 确诊人数
-    csv_file = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-02\\confirmed_count.csv'
+    csv_file = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-13\\confirmed_count.csv'
     # 治愈人数
-    csv_file2 = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-02\\cured_count.csv'
+    csv_file2 = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-13\\cured_count.csv'
     # 死亡人数
-    csv_file3 = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-02\\dead_count.csv'
+    csv_file3 = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-13\\dead_count.csv'
     # 死亡率
-    csv_file4 = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-02\\dead_rate.csv'
+    csv_file4 = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-13\\dead_rate.csv'
 
-    csv_flourish_confirmed_count = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-02\\flourish_confirmedCount.csv'
-    csv_flourish_cured_count = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-02\\flourish_curedCount.csv'
-    csv_flourish_dead_count = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-02\\flourish_deadCount.csv'
-    csv_flourish_dead_rate = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-02\\flourish_deadRate.csv'
+    csv_flourish_confirmed_count = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-13\\flourish_confirmedCount.csv'
+    csv_flourish_cured_count = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-13\\flourish_curedCount.csv'
+    csv_flourish_dead_count = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-13\\flourish_deadCount.csv'
+    csv_flourish_dead_rate = 'D:\\DXY-COVID-19-Data-master\\csv\\2022-05-13\\flourish_deadRate.csv'
 
     # 确诊人数文件
     confirmed_count_file = open(csv_flourish_confirmed_count, 'w', encoding='utf-8')

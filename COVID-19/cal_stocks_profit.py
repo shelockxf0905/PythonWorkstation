@@ -12,7 +12,7 @@ from stocks.stock_info import stock_info
 money_unit = '元'
 sheet_title = ["成交日期", "证券代码", "证券名称", "股票操作", "成交价格", "成交股数", "交易金额", "手续费", "印花税", "其他杂费",
                "交易市场", "交易成本", "净利润", "净利润率"]
-file_name = "D:\\yuxiaoyi\\2022-05-04\\A股历史成交明细.xlsx"
+file_name = "D:\\yuxiaoyi\\2022-05-23\\B股历史交易明细.xlsx"
 
 
 def get_stock_info_dict(code_list, stock_sheet):
@@ -20,8 +20,6 @@ def get_stock_info_dict(code_list, stock_sheet):
     stock_info_dict = {}
     # 股票列表
     stock_list = []
-    # 市场list
-    market_list = []
 
     for row in range(2, stock_sheet.max_row + 1):
         # 交易日期
@@ -105,6 +103,7 @@ def cal_stocks_profit():
     logging.debug('''----------- cal profit start -----------''')
 
     # 导入[A股历史成交明细.xlsx]文件
+    # 导入[B股历史交易明细.xlsx]文件
     stock_wb = openpyxl.load_workbook(file_name)
     # 获取第一个sheet内容
     stock_sheet = stock_wb.worksheets[0]
@@ -117,7 +116,7 @@ def cal_stocks_profit():
     code_list = sorted(set(code_list), key=code_list.index)
     i = 1
     for code in code_list:
-        logging.debug('第{0}--证券代码 = {0}'.format(i, code))
+        logging.debug('第{0}--证券代码 = {1}'.format(i, code))
         i += 1
 
     # 获得stock_info_dict
@@ -140,10 +139,10 @@ def write_profit(sheet, stock_info_dict, code_list):
     """
         计算股票收益
     """
-    sell_cost = 0.0
     profit_rate = 0.0
     x = 2
     y = 1
+
     for code in code_list:
         item_list = stock_info_dict[code]
         for item in item_list:
@@ -230,10 +229,10 @@ def write_profit(sheet, stock_info_dict, code_list):
                            str(others) + money_unit,
                            str(profit) + money_unit,
                            profit_rate))
-                sheet.cell(x, y, profit_rate)
+                # 计算平均利润率用
+                sheet.cell(x, y, round(profit_rate/100, 2))
             y = 1
             x += 1
-        cost = 0
 
 
 def get_buy_cost(deal_price, deal_count, handling_charge, stamp_duty, others):
