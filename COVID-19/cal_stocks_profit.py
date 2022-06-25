@@ -198,7 +198,7 @@ def write_profit(sheet, stock_info_dict, code_list):
                 sheet.cell(x, y, sell_cost)
                 y += 1
                 # 交易利润
-                profit = deal_price * deal_count - sell_cost
+                profit = round(deal_price * deal_count, 2) - sell_cost
                 sheet.cell(x, y, profit)
                 y += 1
                 # 利润率
@@ -222,7 +222,7 @@ def write_profit(sheet, stock_info_dict, code_list):
                 '''.format(deal_date, stock_code, stock_name,
                            str(deal_price) + money_unit,
                            deal_count,
-                           str(deal_price * deal_count) + money_unit,
+                           str(round(deal_price * deal_count, 2)) + money_unit,
                            str(sell_cost) + money_unit,
                            str(handling_charge) + money_unit,
                            str(stamp_duty) + money_unit,
