@@ -26,11 +26,13 @@ def check_filename_len():
             os.rename(os.path.join(file_path, file), os.path.join(file_path, new_name))
 
         if file.startswith('yt5s.com-'):
+            # 把'yt5s.com-'除去
             new_name = file.replace("yt5s.com-", "").strip()
             # 重命名
             os.rename(os.path.join(file_path, file), os.path.join(file_path, new_name))
 
         if file.startswith(' '):
+            # 把空格除去
             new_name = file.strip()
             # 重命名
             os.rename(os.path.join(file_path, file), os.path.join(file_path, new_name))
@@ -40,17 +42,24 @@ def check_filename_len():
         # 判断文件名是否过长
         if len(file.title()) > 94:
             print('重命名元文件名=%s' % file)
+            # 查找'单口相声嘚啵嘚'的字符串
             index_s = file.find('单口相声嘚啵嘚')
             if index_s > 0:
+                # 有'单口相声嘚啵嘚'关键字
+                # 截取60长度的字符串
                 new_name = file[0:60]
+                # 查找'（'的字符串
                 index_topic = file.find('（')
                 if index_topic > 0:
+                    # 有topic
                     topic = file[index_topic:]
                 else:
+                    # 无topic
                     topic = file[index_s:]
                 new_name += topic
                 print('重命名文件名=%s' % new_name)
             else:
+                # 截取90长度的字符串 + '.mp4'
                 new_name = file[0:90] + '.mp4'
                 print('重命名文件名=%s' % new_name)
 
