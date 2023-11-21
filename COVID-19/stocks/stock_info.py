@@ -6,10 +6,10 @@
 """
 import logging
 
-logging.basicConfig(filename='stocks.log',
-                    format='%(asctime)s - %(levelname)s -%(module)s:  %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S %p',
-                    level=10)
+# logging.basicConfig(filename='stocks.log',
+#                     format='%(asctime)s - %(levelname)s -%(module)s:  %(message)s',
+#                     datefmt='%Y-%m-%d %H:%M:%S %p',
+#                     level=10)
 
 
 class stock_info:

@@ -6,7 +6,7 @@
 """
 import os
 
-youtubePath = "D:\\YouTube\\"
+youtubePath = "H:\\YouTube\\"
 
 
 def main():
@@ -97,11 +97,11 @@ def main():
     path28 = "中環孫老師"
     makedir(path28)
 
-    path29 = "巫师"
-    makedir(path29)
+    # path29 = "巫师"
+    # makedir(path29)
 
-    path30 = "不良博士"
-    makedir(path30)
+    # path30 = "不良博士"
+    # makedir(path30)
 
     path31 = "凤凰秀"
     makedir(path31)
